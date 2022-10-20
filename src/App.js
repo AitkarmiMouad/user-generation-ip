@@ -5,7 +5,7 @@ import {useState} from 'react'
 function App() {
 
   const [link,setLink] = useState('')
-  const [server,setServer] = useState('extra')
+  const [server,setServer] = useState('dino')
   const [language,setLanguage] = useState('arabic')
   const [format,setFormat] = useState('simple')
   const [outputArea,setOutputArea] = useState()
@@ -17,17 +17,17 @@ function App() {
     const url = link.split('/get.php?')[0]
     
     if(language==='arabic' && format==='simple'){
-      setOutputArea(`Playlist Name: اي اسم تريده\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${url}`)
+      setOutputArea(`Playlist Name: اي اسم تريده\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${server==='dino'? 'http://line.dino.ws:80': url}`)
     }
     else if(language==='english' && format==='simple'){
-      setOutputArea(`Playlist Name: Any name you want\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${url}`)
+      setOutputArea(`Playlist Name: Any name you want\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${server==='dino'? 'http://line.dino.ws:80': url}`)
     
     }
     else if(language==='arabic' && format==='all'){
-      setOutputArea(`Playlist Name: اي اسم تريده\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${url}\n\nM3U Link : ${link}`)
+      setOutputArea(`Playlist Name: اي اسم تريده\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${server==='dino'? 'http://line.dino.ws:80': url}\n\nM3U Link : ${link}`)
     }
     else if(language==='english' && format==='all'){
-      setOutputArea(`Playlist Name: Any name you want\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${url}\n\nM3U Link : ${link}`)
+      setOutputArea(`Playlist Name: Any name you want\nUsername: ${username}\nPassword: ${password}\nHost/URL: ${server==='dino'? 'http://line.dino.ws:80': url}\n\nM3U Link : ${link}`)
     }
 
   }
@@ -42,7 +42,8 @@ function App() {
       <div style={{ marginTop: 20, }}>
         <label for="server" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Choose Server</label>
         <select id="server" onChange={(e)=>setServer(e.target.value)} className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option value="extra" selected>Extra</option>
+          <option value="dino" selected>Dino</option>
+          <option value="extra" >Extra</option>
           <option value="mega">Mega</option>
         </select>
       </div>
